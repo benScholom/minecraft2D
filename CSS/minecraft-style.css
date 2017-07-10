@@ -1,0 +1,53 @@
+.tile {
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	border: 1px solid black;
+}
+#board {
+	/*width:80vw;
+	height:80vw;*/
+	display:inline-block;
+}
+
+.mrow {
+	height:30px;
+}
+
+div {
+	background-size:cover;
+	background-repeat:no-repeat;
+}
+
+.dirt {
+	background-image:url("../images/dirt.png");
+}
+
+.grass {
+	background-image:url("../images/grass.png");
+}
+
+.rock {
+	background-image:url("../images/rock.png");
+}
+
+.leaf {
+	background-image:url("../images/leaf.png");
+}
+
+.fence {
+	background-image:url("../images/fence.png");
+}
+
+.tree {
+	background-image:url("../images/tree.png");
+}
+
+.cloud {
+	background-color:white;
+}
+
+.sky {
+	background-color:#87ceeb;
+}
+
