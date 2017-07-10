@@ -15,7 +15,7 @@
         <div class= "logos">
             <img class="logo" src="images/MinecraftLogo.png" alt="Minecraft Logo">
         </div>
-        <div class="tutorial">
+        <div class="tutorial" id="tutorial">
             <ol>
                 <li>Press "Start Game"</li>
                 <li>Pick a tool from the menu to remove the <br>corresponding block type</li>
@@ -24,12 +24,16 @@
             </ol>  
         </div> 
         <div class="buttons"> 
-            <button class="button"><a class="link" href="index.html">ENTER</a></button>
-            <button class="button">INSTRUCTIONS</button>
+            <button class="button"><a class="link" href="index.html">START GAME</a></button>
+            <button class="button link" id="instruction">INSTRUCTIONS</button>
         </div>
     </div> 
     </div>
     <script>
+        document.getElementById("instruction").addEventListener("click",tuto)
+        function tuto(){
+            document.getElementById("tutorial").style.visibility = "visible";
+        }
     </script>
 </body>
 </html>
