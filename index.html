@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Minecraft</title>
 	<link href="CSS/minecraft-style.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
@@ -11,7 +13,14 @@
 
 <div class="container">
 <div class="row">
-<div id="board" class="col-md-9"></div><div id ="toolbar" class="col-md-3 text-center"><button type="btn-default" onclick="Minecraft.resetMatrix()">Restart</button></div>
+<div id="board" class="col-md-8"></div>
+<div id ="toolbar" class="col-md-4 text-center">
+	<div class = "toolButton" id = "shovel"><img id="tool" src = "images/shovel.png" alt = "shovel"><p>SHOVEL</p></div>
+    <div class = "toolButton" id = "pickaxe"><img id="tool" src = "images/pickaxe.png" alt = "pickaxe"><p>PICKAXE</p></div>
+    <div class = "toolButton" id = "axe"><img id="tool" src  = "images/axe.png" alt = "axe"><p>AXE</p></div>
+    <div class = "toolButton" id = "storage"></div>
+	<p>STORAGE</p>
+	<button id="button" type="btn-default" onclick="Minecraft.resetMatrix()">Restart</button></div>
 </div>
 </div>
 

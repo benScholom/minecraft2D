@@ -1,8 +1,15 @@
+.container{
+	margin-top:50px;
+    background-color:#87CEEB;
+    font-family: 'Londrina Solid', cursive;
+	border : 3px solid #493615;
+	border-radius:15px;
+}
 .tile {
 	width: 30px;
 	height: 30px;
 	display:inline-block;
-	border: 1px solid black;
+	border: none;
 }
 #board {
 	/*width:80vw;
@@ -50,4 +57,52 @@ div {
 .sky {
 	background-color:#87ceeb;
 }
+#toolbar{
+	background-color:#87CEEB;
+	padding:30px;
+	margin-left:-140px;
+}
+#tool{
+	width:90px;
+	height:90px;
+	background: #AA7030;
+  background-image: -webkit-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -moz-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -ms-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -o-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: linear-gradient(to bottom, #AA7030, #de7d1d);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 18px;
+  border:3px solid #493615;
+  
+}
+#storage{
+	margin-left:120px;
+	width:90px;
+	height:90px;
+	border:3px solid #493615;
+	border-radius: 18px;
+	background-color:white;
+	opacity:0.3;
+}
+#button{
+	margin-top:10px;
+    box-shadow: rgb(138, 42, 33) 4px 6px 10px 0px;
+    background: linear-gradient(rgb(198, 45, 31) 5%, rgb(242, 68, 55) 100%) rgb(198, 45, 31);
+    border-radius: 18px;
+    border: 2px solid rgb(208, 39, 24);
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 20px;
+    padding: 9px 76px;
+    text-decoration: none;
+    text-shadow: rgb(129, 14, 5) 0px 2px 0px;
+}
+#button:hover{
+    color:black;
+}
+
 
