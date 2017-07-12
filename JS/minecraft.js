@@ -2,6 +2,13 @@
 
 var Minecraft = {};
 
+Minecraft.dirtCounter = 0;
+Minecraft.grassCounter = 0;
+Minecraft.rockCounter = 0;
+Minecraft.treeCounter = 0;
+Minecraft.leafCounter = 0;
+Minecraft.fenceCounter = 0;
+
 var tool = "";
 
 $("#shovel").on("click",shovel)
@@ -32,28 +39,23 @@ $("#axe").on("click",axe)
 			console.log(tool);
         }
 
-/*Minecraft.storedTile = "";
+/*
 
 Minecraft.storage = function (el){
 	if(el=="dirt"){
-		$("#storage").css("background-image","url('./images/dirt.png')");
-		Minecraft.storedTile = "dirt";
+		
 	}else if(el=="grass"){
-		$("#storage").css("background-image","url('./images/grass.png')");
-		Minecraft.storedTile = "grass";
+
 	}else if(el=="rock"){
-		$("#storage").css("background-image","url('./images/rock.png')");
-		Minecraft.storedTile = "rock";
+
 	}else if(el=="leaf"){
-		$("#storage").css("background-image","url('./images/leaf.png')");
-		Minecraft.storedTile = "leaf";
+
 	}else if(el=="tree"){
-		$("#storage").css("background-image","url('./images/tree.png')");
-		Minecraft.storedTile = "tree";
+
 	}else{
-		$("#storage").css("background-image","");
-	}*/
-}
+
+	}
+}*/
 
 //create the board
 Minecraft.createMatrix = function() {
