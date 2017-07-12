@@ -2,6 +2,7 @@
 
 var Minecraft = {};
 
+Minecraft.clear = function() {
 Minecraft.dirtCounter = 0;
 Minecraft.grassCounter = 0;
 Minecraft.rockCounter = 0;
@@ -15,16 +16,22 @@ $("#counterRock").html(Minecraft.rockCounter);
 $("#counterLeaf").html(Minecraft.leafCounter);
 $("#counterFence").html(Minecraft.fenceCounter);
 $("#counterTree").html(Minecraft.treeCounter);
+};
+
+Minecraft.clear();
 
 var tool = "";
-
+Minecraft.inventory = "";
+//tool and inventory item creation and selection
 $("#shovel").on("click",shovel)
         function shovel(event){
 			$("#pickaxe").css("border", "none");
 			$("#axe").css("border","none");
             $("#shovel").css("border","3px solid rgb(129, 14, 5)");
 			$("#shovel").css("border-radius ", "15px");
+			$(".storage").css("border","none");
 			tool = "shovel";
+			Minecraft.inventory = "";
 			console.log(tool);
         };
 $("#pickaxe").on("click",pickaxe)
@@ -33,7 +40,9 @@ $("#pickaxe").on("click",pickaxe)
 			$("#axe").css("border","none");
             $("#pickaxe").css("border","3px solid rgb(129, 14, 5)");
 			$("#pickaxe").css("border-radius ", "15px");
+			$(".storage").css("border","none");
 			tool="pickaxe";
+			Minecraft.inventory = "";
 			console.log(tool);
         }
 $("#axe").on("click",axe)
@@ -42,30 +51,67 @@ $("#axe").on("click",axe)
 			$("#pickaxe").css("border","none");
             $("#axe").css("border","3px solid rgb(129, 14, 5)");
 			$("#axe").css("border-radius ", "15px");
+			$(".storage").css("border","none");
 			tool="axe";
+			Minecraft.inventory = "";
 			console.log(tool);
         }
+        //selection of inventory items - deselect everything else
+ $(".storage").on("click", function (event) {
+			$("#shovel").css("border","none");
+			$("#pickaxe").css("border","none");
+			$("#axe").css("border","none");
+			$(".storage").css("border", "none");
+			tool = "";
+			Minecraft.inventory = "";
+			var target = this;
+			$(target).css("border", "3px solid rgb(129, 14, 5)");
+			var id = target.id;
+			if (id == "storage1") {
+				Minecraft.inventory = "grass";
+			} else if (id == "storage2") {
+				Minecraft.inventory = "dirt";
+			}else if (id == "storage3") {
+				Minecraft.inventory = "rock";
+			}else if (id == "storage4") {
+				Minecraft.inventory = "tree";
+			}else if (id == "storage5") {
+				Minecraft.inventory = "leaf";
+			}else if (id == "storage6") {
+				Minecraft.inventory = "fence";
+			}
+			console.log(Minecraft.inventory);
+});
+//used for increaseing and decreasing from storage
+/*Minecraft.stable = function(counter, id, direction) {
+	if ((counter + direction) < 0) {
+		return false;
+	} else {
+		counter += direction;
+		$(id).html(counter);
+		return true;
+	}
+};*/
 
-
-
-Minecraft.storage = function (el){
+Minecraft.storage = function (el, direction){
 	if(el=="dirt"){
-		Minecraft.dirtCounter++;
+		//Minecraft.stable(Minecraft.dirtCounter, "#counterDirt", direction);
+		Minecraft.dirtCounter += direction;
 		$("#counterDirt").html(Minecraft.dirtCounter);
 	}else if(el=="grass"){
-		Minecraft.grassCounter++;
+		Minecraft.grassCounter += direction;
 		$("#counterGrass").html(Minecraft.grassCounter);
 	}else if(el=="rock"){
-		Minecraft.rockCounter++;
+		Minecraft.rockCounter += direction;
 		$("#counterRock").html(Minecraft.rockCounter);
 	}else if(el=="leaf"){
-		Minecraft.leafCounter++;
+		Minecraft.leafCounter += direction;
 		$("#counterLeaf").html(Minecraft.leafCounter);
 	}else if(el=="tree"){
-		Minecraft.treeCounter++;
+		Minecraft.treeCounter += direction;
 		$("#counterTree").html(Minecraft.treeCounter);
 	}else if(el=="fence"){
-		Minecraft.fenceCounter++;
+		Minecraft.fenceCounter += direction;
 		$("#counterFence").html(Minecraft.fenceCounter);
 	}
 };
@@ -258,6 +304,7 @@ Minecraft.resetMatrix = function() {
 			.removeClass("sky")
 			.removeClass("cloud")
 			.removeClass("fence");
+	Minecraft.clear();
 //set values in the grid array to blank
 		for(var i = 0; i < Minecraft.grid.length; i++) {
 			for(var j = 0; j < Minecraft.grid[i].length; j++) {
@@ -267,22 +314,26 @@ Minecraft.resetMatrix = function() {
 		//repopulate the board
 	Minecraft.populateBoard();
 };
-
+//alter tile function, takes the tile's type, the click, and the coordinates and changes it to sky while placing the tile in storage
 Minecraft.alterTile = function(tiletype, evt, r, c) {
 	$(evt).removeClass(tiletype);
 	Minecraft.grid[r][c] = "sky";
 	$(evt).addClass(Minecraft.grid[r][c]);
-	Minecraft.storage(tiletype);
+	Minecraft.storage(tiletype, 1);
 };
+
 //when a player clicks on the board, other highlighted tiles are unhighlited
 $("#board").on("click", function(event){
+	//any tile borders are removed
 	$(".tile").css("border", "");
-	//the selected till
+	//row and column are taken from selected tile
 	var target = event.target
-	var r = $(event.target).data("r");
-	var c = $(event.target).data("c");
+	var r = $(target).data("r");
+	var c = $(target).data("c");
+	//tile's class name is taken from corresponding string in grid
 	var box = Minecraft.grid[r][c];
 	console.log(Minecraft.grid[r][c]);
+	//class name compared with tool, if the match makes sense the tile will be alterd
 	if (tool == "shovel" && box == "dirt") {
 		Minecraft.alterTile("dirt", target, r, c);
 	} else if (tool == "shovel" && box == "grass") {
@@ -293,9 +344,18 @@ $("#board").on("click", function(event){
 		Minecraft.alterTile("leaf", target, r, c);
 	} else if (tool == "axe" && box == "tree") {
 		Minecraft.alterTile("tree", target, r, c);
+		//if the tool cant do anything with the tile, it gets a red border
+	} else if(Minecraft.inventory != "" && Minecraft.grid[r][c] == "sky"){
+		Minecraft.storage(Minecraft.inventory, -1);
+		//if (Minecraft.stable() != false) {
+			Minecraft.grid[r][c] = Minecraft.inventory;
+			$(target).removeClass("sky");
+			$(target).addClass(Minecraft.grid[r][c]);
+		//}
 	} else {
 		$(target).css("border", "1px solid red");
 	}
 });
+
 
 
