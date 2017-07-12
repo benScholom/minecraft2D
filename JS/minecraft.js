@@ -23,49 +23,49 @@ Minecraft.clear();
 var tool = "";
 Minecraft.inventory = "";
 //tool and inventory item creation and selection
-$("#shovel").on("click",shovel)
+$("#tool1").on("click",shovel)
         function shovel(event){
-			$("#pickaxe").css("border", "none");
-			$("#axe").css("border","none");
-            $("#shovel").css("border","3px solid rgb(129, 14, 5)");
-			$("#shovel").css("border-radius ", "15px");
-			$(".storage").css("border","none");
+			$("#tool2").css("border", "3px solid #493615");
+			$("#tool3").css("border","3px solid #493615");
+            $("#tool1").css("border","5px solid rgb(129, 14, 5)");
+			$("#tool1").css("border-radius ", "15px");
+			$(".storage").css("border","3px solid #493615");
 			tool = "shovel";
 			Minecraft.inventory = "";
 			console.log(tool);
         };
-$("#pickaxe").on("click",pickaxe)
+$("#tool2").on("click",pickaxe)
         function pickaxe(event){
-			$("#shovel").css("border","none");
-			$("#axe").css("border","none");
-            $("#pickaxe").css("border","3px solid rgb(129, 14, 5)");
-			$("#pickaxe").css("border-radius ", "15px");
-			$(".storage").css("border","none");
+			$("#tool1").css("border","3px solid #493615");
+			$("#tool3").css("border","3px solid #493615");
+            $("#tool2").css("border","5px solid rgb(129, 14, 5)");
+			$("#tool2").css("border-radius ", "15px");
+			$(".storage").css("border","3px solid #493615");
 			tool="pickaxe";
 			Minecraft.inventory = "";
 			console.log(tool);
         }
-$("#axe").on("click",axe)
+$("#tool3").on("click",axe)
         function axe(event){
-			$("#shovel").css("border","none");
-			$("#pickaxe").css("border","none");
-            $("#axe").css("border","3px solid rgb(129, 14, 5)");
-			$("#axe").css("border-radius ", "15px");
-			$(".storage").css("border","none");
+			$("#tool1").css("border","3px solid #493615");
+			$("#tool2").css("border","3px solid #493615");
+            $("#tool3").css("border","5px solid rgb(129, 14, 5)");
+			$("#tool3").css("border-radius ", "15px");
+			$(".storage").css("border","3px solid #493615");
 			tool="axe";
 			Minecraft.inventory = "";
 			console.log(tool);
         }
         //selection of inventory items - deselect everything else
  $(".storage").on("click", function (event) {
-			$("#shovel").css("border","none");
-			$("#pickaxe").css("border","none");
-			$("#axe").css("border","none");
-			$(".storage").css("border", "none");
+			$("#tool1").css("border","3px solid #493615");
+			$("#tool2").css("border","3px solid #493615");
+			$("#tool3").css("border","3px solid #493615");
+			$(".storage").css("border", "3px solid #493615");
 			tool = "";
 			Minecraft.inventory = "";
 			var target = this;
-			$(target).css("border", "3px solid rgb(129, 14, 5)");
+			$(target).css("border", "5px solid rgb(129, 14, 5)");
 			var id = target.id;
 			if (id == "storage1") {
 				Minecraft.inventory = "grass";
