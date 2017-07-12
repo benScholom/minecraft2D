@@ -9,6 +9,13 @@ Minecraft.treeCounter = 0;
 Minecraft.leafCounter = 0;
 Minecraft.fenceCounter = 0;
 
+$("#counterDirt").html(Minecraft.dirtCounter);
+$("#counterGrass").html(Minecraft.grassCounter);
+$("#counterRock").html(Minecraft.rockCounter);
+$("#counterLeaf").html(Minecraft.leafCounter);
+$("#counterFence").html(Minecraft.fenceCounter);
+$("#counterTree").html(Minecraft.treeCounter);
+
 var tool = "";
 
 $("#shovel").on("click",shovel)
@@ -39,23 +46,29 @@ $("#axe").on("click",axe)
 			console.log(tool);
         }
 
-/*
+
 
 Minecraft.storage = function (el){
 	if(el=="dirt"){
-		
+		Minecraft.dirtCounter++;
+		$("#counterDirt").html(Minecraft.dirtCounter);
 	}else if(el=="grass"){
-
+		Minecraft.grassCounter++;
+		$("#counterGrass").html(Minecraft.grassCounter);
 	}else if(el=="rock"){
-
+		Minecraft.rockCounter++;
+		$("#counterRock").html(Minecraft.rockCounter);
 	}else if(el=="leaf"){
-
+		Minecraft.leafCounter++;
+		$("#counterLeaf").html(Minecraft.leafCounter);
 	}else if(el=="tree"){
-
-	}else{
-
+		Minecraft.treeCounter++;
+		$("#counterTree").html(Minecraft.treeCounter);
+	}else if(el=="fence"){
+		Minecraft.fenceCounter++;
+		$("#counterFence").html(Minecraft.fenceCounter);
 	}
-}*/
+};
 
 //create the board
 Minecraft.createMatrix = function() {
@@ -86,7 +99,7 @@ Minecraft.createMatrix = function() {
 					);
 		}
 	}
-}
+};
 //build the matrix
 Minecraft.createMatrix();
 
@@ -261,9 +274,10 @@ Minecraft.alterTile = function(tiletype, evt, r, c) {
 	$(evt).addClass(Minecraft.grid[r][c]);
 	Minecraft.storage(tiletype);
 };
-
+//when a player clicks on the board, other highlighted tiles are unhighlited
 $("#board").on("click", function(event){
 	$(".tile").css("border", "");
+	//the selected till
 	var target = event.target
 	var r = $(event.target).data("r");
 	var c = $(event.target).data("c");
@@ -283,3 +297,5 @@ $("#board").on("click", function(event){
 		$(target).css("border", "1px solid red");
 	}
 });
+
+
