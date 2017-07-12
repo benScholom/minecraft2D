@@ -2,6 +2,52 @@
 
 var Minecraft = {};
 
+var tool = "";
+
+$("#shovel").on("click",shovel)
+        function shovel(event){
+			$("#pickaxe").css("border", "none");
+			$("#axe").css("border","none");
+            $("#shovel").css("border","3px solid rgb(129, 14, 5)");
+			$("#shovel").css("border-radius ", "15px");
+			tool = "shovel";
+			console.log(tool);
+        };
+$("#pickaxe").on("click",pickaxe)
+        function pickaxe(event){
+			$("#shovel").css("border","none");
+			$("#axe").css("border","none");
+            $("#pickaxe").css("border","3px solid rgb(129, 14, 5)");
+			$("#pickaxe").css("border-radius ", "15px");
+			tool="pickaxe";
+			console.log(tool);
+        }
+$("#axe").on("click",axe)
+        function axe(event){
+			$("#shovel").css("border","none");
+			$("#pickaxe").css("border","none");
+            $("#axe").css("border","3px solid rgb(129, 14, 5)");
+			$("#axe").css("border-radius ", "15px");
+			tool="axe";
+			console.log(tool);
+        }
+
+Minecraft.storage = function (el){
+	if(el=="dirt"){
+		$("#storage").css("background-image","url('../images/dirt.png')");
+	}else if(el=="grass"){
+		$("#storage").css("background-image","url('../images/grass.png')");
+	}else if(el=="rock"){
+		$("#storage").css("background-image","url('../images/rock.png')");
+	}else if(el=="leaf"){
+		$("#storage").css("background-image","url('../images/leaf.png')");
+	}else if(el=="tree"){
+		$("#storage").css("background-image","url('../images/tree.png')");
+	}else{
+		$("#storage").css("background-image","");
+	}
+}
+
 //create the board
 Minecraft.createMatrix = function() {
 	// create game rows to hold tiles
@@ -28,7 +74,7 @@ Minecraft.createMatrix = function() {
 					.data('r', i)
 					.data('c', j)
 					.attr("id", 20*i+j)
-					.on("click", Minecraft.selected();
+					.on("click", Minecraft.selected));
 		}
 	}
 }
@@ -201,38 +247,40 @@ Minecraft.resetMatrix = function() {
 };
 
 
-Minecraft.selected = function() {
-	var r = $(this).data('r');
-	var c = $(this).data("c");
+Minecraft.selected = function(event) {
+	var target = $(event.target);
+	var r = target.data('r');
+	var c = target.data("c");
 	var box = Minecraft.grid[r][c];
-	$(this).css("border", "1px solid white");
-	if (tool == "shovel" && box = "dirt") {
-		$(this).removeClass('dirt');
+	console.log(Minecraft.grid[r][c]);
+	target.css("border", "1px solid white");
+	if (tool == "shovel" && box == "dirt") {
+		target.removeClass('dirt');
 		Minecraft.grid[r][c] = "sky";
-		$(this).addClass(Minecraft.grid[r][c]);
+		target.addClass(Minecraft.grid[r][c]);
 		Minecraft.storage("dirt");
-	} else if (tool == "shovel" && box = "grass") {
-		$(this).removeClass('grass');
-		Minecraft.grid[r][c] = "sky";
-		$(this).addClass(Minecraft.grid[r][c]);
+	} else if (tool == "shovel" && box == "grass") {
+		target.removeClass('grass');
+		Minecraft.grid[r][c] =="sky";
+		target.addClass(Minecraft.grid[r][c]);
 		Minecraft.storage("grass");		
-	} else if (tool == "pickaxe" && box = "rock") {
-		$(this).removeClass('rock');
+	} else if (tool == "pickaxe" && box == "rock") {
+		target.removeClass('rock');
 		Minecraft.grid[r][c] = "sky";
-		$(this).addClass(Minecraft.grid[r][c]);
+		target.addClass(Minecraft.grid[r][c]);
 		Minecraft.storage("rock");
-	} else if (tool == "axe" && box = "leaf") {
-		$(this).removeClass('leaf');
+	} else if (tool == "axe" && box == "leaf") {
+		target.removeClass('leaf');
 		Minecraft.grid[r][c] = "sky";
-		$(this).addClass(Minecraft.grid[r][c]);
+		target.addClass(Minecraft.grid[r][c]);
 		Minecraft.storage("leaf");
-	} else if (tool == "axe" && box = "tree") {
-		$(this).removeClass('tree');
+	} else if (tool == "axe" && box == "tree") {
+		target.removeClass('tree');
 		Minecraft.grid[r][c] = "sky";
-		$(this).addClass(Minecraft.grid[r][c]);
+		target.addClass(Minecraft.grid[r][c]);
 		Minecraft.storage("tree");
 	} else {
-		$(this).css("border", "");
-		$(this).css("border", "1px solid red");
+		target.css("border", "");
+		target.css("border", "1px solid red");
 	}
-}
+};
