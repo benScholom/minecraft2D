@@ -14,14 +14,20 @@
 <div class="container">
 <div class="row">
 <div id="board" class="col-md-8"></div>
-<div id ="toolbar" class="col-md-4 text-center">
+<div id ="toolbar" class="col-md-2 text-center">
 	<div class = "toolButton" id = "shovel"><img id="tool" src = "images/shovel.png" alt = "shovel"><p>SHOVEL</p></div>
     <div class = "toolButton" id = "pickaxe"><img id="tool" src = "images/pickaxe.png" alt = "pickaxe"><p>PICKAXE</p></div>
     <div class = "toolButton" id = "axe"><img id="tool" src  = "images/axe.png" alt = "axe"><p>AXE</p></div>
-    <div class = "toolButton" id = "storage"></div>
-	<p>STORAGE</p>
-	<button id="button" type="btn-default" onclick="Minecraft.resetMatrix()">Restart</button></div>
 </div>
+<div id="toolbar2" class="col-md-2 text-center">
+    <div class = "storage" id="storage1"><p id="counterGrass"></p></div>
+	<div class = "storage" id="storage2"><p id="counterDirt"></p></div>
+	<div class = "storage" id="storage3"><p id="counterRock"></p></div>
+	<div class = "storage" id="storage4"><p id="counterTree"></p></div>
+	<div class = "storage" id="storage5"><p id="counterLeaf"></p></div>
+	<div class = "storage" id="storage6"><p id="counterFence"></p></div>
+</div>
+	<button id="button" type="btn-default" onclick="Minecraft.resetMatrix()">Restart</button></div>
 </div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

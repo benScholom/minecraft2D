@@ -3,7 +3,6 @@
     background-color:#87CEEB;
     font-family: 'Londrina Solid', cursive;
 	border : 3px solid #493615;
-	border-radius:15px;
 }
 .tile {
 	width: 30px;
@@ -62,7 +61,13 @@ div {
 	padding:30px;
 	margin-left:0px;
 	border-left : 3px solid #493615;
-	border-radius:15px;
+	border-bottom : 3px solid #493615;
+}
+#toolbar2{
+	background-color:rgb(113, 177, 62);
+	padding:30px;
+	margin-left:0px;
+	border-bottom : 3px solid #493615;
 }
 #tool{
 	width:90px;
@@ -78,19 +83,10 @@ div {
   	border-radius: 18px;
   	border:3px solid #493615;
   	cursor:pointer;
-}
-#storage{
-	margin-left:120px;
-	width:90px;
-	height:90px;
-	border:3px solid #493615;
-	border-radius: 18px;
-	background-color:white;
-	opacity:0.3;
-	cursor:pointer;
+	  margin-left:-60px;
+	  margin-top:40px;
 }
 #button{
-	margin-top:10px;
     box-shadow: rgb(138, 42, 33) 4px 6px 10px 0px;
     background: linear-gradient(rgb(198, 45, 31) 5%, rgb(242, 68, 55) 100%) rgb(198, 45, 31);
     border-radius: 18px;
@@ -103,6 +99,9 @@ div {
     padding: 9px 76px;
     text-decoration: none;
     text-shadow: rgb(129, 14, 5) 0px 2px 0px;
+	margin-left:850px;
+	margin-bottom: 5px;
+    margin-top: -50px;
 }
 #button:hover{
     color:black;
@@ -111,6 +110,34 @@ div {
 	padding:5px;
 	margin-left:80px;
 	margin-right:80px;
+}
+.storage{
+	margin-top:15px;
+	width:70px;
+	height:70px;
+	border:3px solid #493615;
+	border-radius: 18px;
+	background-color:white;
+	cursor:pointer;
+	opacity:0.8;
+}
+#storage1{
+	background-image:url("../images/grass.png");
+}
+#storage2{
+	background-image:url("../images/dirt.png");
+}
+#storage3{
+	background-image:url("../images/rock.png");
+}
+#storage4{
+	background-image:url("../images/tree.png");
+}
+#storage5{
+	background-image:url("../images/leaf.png");
+}
+#storage6{
+	background-image:url("../images/fence.png");
 }
 
 
