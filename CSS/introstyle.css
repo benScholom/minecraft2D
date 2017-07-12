@@ -1,3 +1,7 @@
+@font-face{
+	font-family:Minecraft;
+	src: url("../fonts/Minecrafter.Alt.ttf")
+}
 body{
     background-image:url("../images/background.jpg");
     background-repeat:no-repeat;
@@ -5,7 +9,7 @@ body{
     background-color:rgb(121, 182, 65);
     margin:0px;
     margin-bottom:60px;
-    font-family: 'Londrina Solid', cursive;
+    font-family: 'Minecraft';
 }
 img{
     width:80%;
@@ -27,7 +31,7 @@ img{
     display: inline-block;
     cursor: pointer;
     color: rgb(255, 255, 255);
-    font-family: Arial;
+    font-family: 'Minecraft';
     font-size: 20px;
     padding: 9px 76px;
     text-decoration: none;
@@ -42,12 +46,13 @@ img{
 }
 .tutorial{
     position:absolute;
+    width:60%;
     margin-top:-100px;
     background-color:white;
     opacity:0.6;
     border:3px dotted black;
     border-radius:15px;
-    margin-left:90px;
+    margin-left:50px;
     padding:20px;
     font-size:20px;
     visibility:hidden;

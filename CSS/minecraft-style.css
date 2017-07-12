@@ -1,8 +1,12 @@
+@font-face{
+	font-family:Minecraft;
+	src: url("../fonts/Minecrafter.Alt.ttf")
+}
 .container{
 	margin-top:50px;
     background-color:#87CEEB;
-    font-family: 'Londrina Solid', cursive;
 	border : 3px solid #493615;
+	font-family: 'Minecraft';
 }
 .tile {
 	width: 30px;
@@ -11,7 +15,6 @@
 	border: none;
 }
 #board {
-	border: 1px solid black;
 	display:inline-block;
 }
 
@@ -68,7 +71,7 @@ div {
 	margin-left:0px;
 	border-bottom : 3px solid #493615;
 }
-#tool{
+#tool1{
 	width:90px;
 	height:90px;
 	background: #AA7030;
@@ -83,7 +86,41 @@ div {
   	border:3px solid #493615;
   	cursor:pointer;
 	  margin-left:-60px;
-	  margin-top:40px;
+	  margin-top:35px;
+}
+#tool2{
+	width:90px;
+	height:90px;
+	background: #AA7030;
+  background-image: -webkit-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -moz-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -ms-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -o-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: linear-gradient(to bottom, #AA7030, #de7d1d);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  	border-radius: 18px;
+  	border:3px solid #493615;
+  	cursor:pointer;
+	  margin-left:-60px;
+	  margin-top:35px;
+}
+#tool3{
+	width:90px;
+	height:90px;
+	background: #AA7030;
+  background-image: -webkit-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -moz-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -ms-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: -o-linear-gradient(top, #AA7030, #de7d1d);
+  background-image: linear-gradient(to bottom, #AA7030, #de7d1d);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  	border-radius: 18px;
+  	border:3px solid #493615;
+  	cursor:pointer;
+	  margin-left:-60px;
+	  margin-top:35px;
 }
 #button{
     box-shadow: rgb(138, 42, 33) 4px 6px 10px 0px;
@@ -93,7 +130,7 @@ div {
     display: inline-block;
     cursor: pointer;
     color: rgb(255, 255, 255);
-    font-family: Arial;
+    font-family: 'Minecraft';
     font-size: 20px;
     padding: 9px 76px;
     text-decoration: none;
@@ -137,6 +174,15 @@ div {
 }
 #storage6{
 	background-image:url("../images/fence.png");
+}
+.number{
+	color:white;
+	font-size:50px;
+	font-family: 'Minecraft';
+}
+.text{
+	margin-left:-60px;
+	margin-top:5px;
 }
 
 
