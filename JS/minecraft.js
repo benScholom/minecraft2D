@@ -9,7 +9,8 @@ Minecraft.grassCounter = 0;
 Minecraft.rockCounter = 0;
 Minecraft.treeCounter = 0;
 Minecraft.leafCounter = 0;
-Minecraft.fenceCounter = 0;
+//start with six fence tiles to place but they are unremovable
+Minecraft.fenceCounter = 6;
 
 $("#counterDirt").html(Minecraft.dirtCounter);
 $("#counterGrass").html(Minecraft.grassCounter);
