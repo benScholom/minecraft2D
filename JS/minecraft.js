@@ -345,7 +345,8 @@ $("#board").on("click", function(event){
 	} else if (tool == "axe" && box == "tree") {
 		Minecraft.alterTile("tree", target, r, c);
 		//if the tool cant do anything with the tile, it gets a red border
-	} else if(Minecraft.inventory != "" && Minecraft.grid[r][c] == "sky"){
+	} else if(Minecraft.inventory != "" && Minecraft.grid[r][c] == "sky" &&  Minecraft[Minecraft["inventory"] + "Counter" ] > 0){
+		console.log("inventory", Minecraft[Minecraft["inventory"] + "Counter" ]);
 		Minecraft.storage(Minecraft.inventory, -1);
 		//if (Minecraft.stable() != false) {
 			Minecraft.grid[r][c] = Minecraft.inventory;
