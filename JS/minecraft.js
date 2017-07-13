@@ -1,8 +1,9 @@
 //namespace to rule them all
 
 var Minecraft = {};
-
+//function that clears counters during reset
 Minecraft.clear = function() {
+	//counters for tiles in inventory
 Minecraft.dirtCounter = 0;
 Minecraft.grassCounter = 0;
 Minecraft.rockCounter = 0;
@@ -17,7 +18,7 @@ $("#counterLeaf").html(Minecraft.leafCounter);
 $("#counterFence").html(Minecraft.fenceCounter);
 $("#counterTree").html(Minecraft.treeCounter);
 };
-
+//clear the counters in beggining
 Minecraft.clear();
 
 var tool = "";
@@ -25,11 +26,13 @@ Minecraft.inventory = "";
 //tool and inventory item creation and selection
 $("#tool1").on("click",shovel)
         function shovel(event){
+        	//assign border to selected tool and remove borders from everything else
 			$("#tool2").css("border", "3px solid #493615");
 			$("#tool3").css("border","3px solid #493615");
             $("#tool1").css("border","5px solid rgb(129, 14, 5)");
 			$("#tool1").css("border-radius ", "15px");
 			$(".storage").css("border","3px solid #493615");
+			//set tool and remove anything from inventory placement variable
 			tool = "shovel";
 			Minecraft.inventory = "";
 			console.log(tool);
@@ -67,6 +70,7 @@ $("#tool3").on("click",axe)
 			var target = this;
 			$(target).css("border", "5px solid rgb(129, 14, 5)");
 			var id = target.id;
+			//place selected inventory tile type into inventory for placement
 			if (id == "storage1") {
 				Minecraft.inventory = "grass";
 			} else if (id == "storage2") {
@@ -82,20 +86,9 @@ $("#tool3").on("click",axe)
 			}
 			console.log(Minecraft.inventory);
 });
-//used for increaseing and decreasing from storage
-/*Minecraft.stable = function(counter, id, direction) {
-	if ((counter + direction) < 0) {
-		return false;
-	} else {
-		counter += direction;
-		$(id).html(counter);
-		return true;
-	}
-};*/
-
+//storage function which will increment or decrement the counter depending on whether a tile is selected or replaced
 Minecraft.storage = function (el, direction){
 	if(el=="dirt"){
-		//Minecraft.stable(Minecraft.dirtCounter, "#counterDirt", direction);
 		Minecraft.dirtCounter += direction;
 		$("#counterDirt").html(Minecraft.dirtCounter);
 	}else if(el=="grass"){
@@ -344,15 +337,14 @@ $("#board").on("click", function(event){
 		Minecraft.alterTile("leaf", target, r, c);
 	} else if (tool == "axe" && box == "tree") {
 		Minecraft.alterTile("tree", target, r, c);
-		//if the tool cant do anything with the tile, it gets a red border
+		//placement function, tests the inventory item selected against its counter and places if counter is above zero and the tile is a sky tile
 	} else if(Minecraft.inventory != "" && Minecraft.grid[r][c] == "sky" &&  Minecraft[Minecraft["inventory"] + "Counter" ] > 0){
 		console.log("inventory", Minecraft[Minecraft["inventory"] + "Counter" ]);
 		Minecraft.storage(Minecraft.inventory, -1);
-		//if (Minecraft.stable() != false) {
 			Minecraft.grid[r][c] = Minecraft.inventory;
 			$(target).removeClass("sky");
 			$(target).addClass(Minecraft.grid[r][c]);
-		//}
+			//if the tool cant do anything with the tile, it gets a red border
 	} else {
 		$(target).css("border", "1px solid red");
 	}
